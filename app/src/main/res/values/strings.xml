@@ -6,6 +6,7 @@
     <string name="title_xx"><Data><![CDATA[<b>Title:</b> %1$s]]></Data></string>
     <string name="description_xx"><Data><![CDATA[<b>Description:</b> %1$s]]></Data></string>
     <string name="author_xx"><Data><![CDATA[<b>Author:</b> %1$s]]></Data></string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
 
 
 </resources>

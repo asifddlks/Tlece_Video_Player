@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "716286460833",
+    "project_id": "tlece-video-player",
+    "storage_bucket": "tlece-video-player.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716286460833:android:d797fd2fe4d9bd52ddc1e0",
+        "android_client_info": {
+          "package_name": "com.asifddlks.tlecevideoplayer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzuigPNFQrhWBeDQzQRHHyy-h0rYyPabQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

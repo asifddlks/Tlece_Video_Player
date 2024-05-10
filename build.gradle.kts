@@ -5,4 +5,5 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.navigation.safeargs.kotlin) apply false
+    alias(libs.plugins.google.gms.google.services) apply false
 }

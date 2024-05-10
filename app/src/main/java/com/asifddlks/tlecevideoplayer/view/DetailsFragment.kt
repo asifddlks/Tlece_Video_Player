@@ -31,7 +31,7 @@ class DetailsFragment : Fragment() {
 
     lateinit var mediaController: MediaController
 
-    var isVideoViewPrepared = false
+    private var isVideoViewPrepared = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +40,6 @@ class DetailsFragment : Fragment() {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        //val videoItem = args.videoItem
         viewModel.videoItem = args.videoItem
 
         prepareViews()

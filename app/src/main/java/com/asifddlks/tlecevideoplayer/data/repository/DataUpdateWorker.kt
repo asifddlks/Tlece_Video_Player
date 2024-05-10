@@ -23,9 +23,6 @@ class DataUpdateWorker(context: Context, workerParams: WorkerParameters) :
             val response = apiService.fetchVideos()
 
             if (response.isNotEmpty()) {
-                /*val videoEntities = response.map { video ->
-                    VideoEntity(video.id, video.title, video.description, video.thumbnailUrl)
-                }*/
                 val videoEntities = response
                 val database = VideoPlayerApplication.database
                 val dao = database.videoDao()

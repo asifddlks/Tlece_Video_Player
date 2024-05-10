@@ -1,8 +1,11 @@
 package com.asifddlks.tlecevideoplayer.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "videos")
 data class VideoModel(
     @PrimaryKey val id: String,
@@ -16,4 +19,4 @@ data class VideoModel(
     val description: String,
     val subscriber: String,
     val isLive: Boolean
-)
+) : Parcelable

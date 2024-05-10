@@ -1,5 +1,6 @@
 package com.asifddlks.tlecevideoplayer.view
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.asifddlks.tlecevideoplayer.R
 import com.asifddlks.tlecevideoplayer.databinding.FragmentHomeBinding
 import com.asifddlks.tlecevideoplayer.model.VideoModel
 import com.asifddlks.tlecevideoplayer.view.adapter.VideoItemAdapter
@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        initViews()
+        prepareViews()
         initListeners()
 
         subscribeToObservables()
@@ -41,6 +41,17 @@ class HomeFragment : Fragment() {
         viewModel.getVideos()
 
         return view
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // React to orientation changes here
+        // You might want to adjust the layout and configuration of your VideoView
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            binding.videoList.layoutManager = GridLayoutManager(requireContext(),4)
+        }else{
+            binding.videoList.layoutManager = GridLayoutManager(requireContext(),2)
+        }
     }
 
     private fun subscribeToObservables() {
@@ -82,14 +93,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initViews() {
+    private fun prepareViews() {
         adapter = VideoItemAdapter(object :
             VideoItemAdapter.VideoItemInterface {
             override fun clickedOnVideoItem(item: VideoModel) {
-                findNavController().navigate(R.id.action_homeFragment_to_detailsFragment)
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
+                findNavController().navigate(action)
             }
         })
-        binding.videoList.layoutManager = GridLayoutManager(requireContext(),2)
+
+        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            binding.videoList.layoutManager = GridLayoutManager(requireContext(),4)
+        }else{
+            binding.videoList.layoutManager = GridLayoutManager(requireContext(),2)
+        }
         binding.videoList.adapter = adapter
     }
 
